@@ -8,12 +8,12 @@ public class IfElseMystery1 {
     public static void ifElseMystery1(int x, int y) {
         int z = 4;
         if (z <= x) {
-            z = x + 1;
+            z = x + 1; //7
         } else {
-            z = z + 9;
+            z = z + 9;//
         }
         if (z <= y) {
-            y++;
+            y++;//11
         }
         System.out.println(z + " " + y);
     }
@@ -29,6 +29,9 @@ public class IfElseMystery1 {
 
 /* Before running the code, type your answer below.
 
-TODO: Write output here
+13 21
+5 6
+6 5
+7 11
 
 Then, click the green play button to check your work. */

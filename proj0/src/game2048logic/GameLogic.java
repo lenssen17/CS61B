@@ -1,5 +1,6 @@
 package game2048logic;
 
+import game2048rendering.Board;
 import game2048rendering.Side;
 import static game2048logic.MatrixUtils.rotateLeft;
 import static game2048logic.MatrixUtils.rotateRight;
@@ -19,7 +20,26 @@ public class GameLogic {
      *              if no merge occurs, then return 0.
      */
     public static int moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR) {
-        // TODO: Fill this in in tasks 2, 3, 4
+        if( r == 0){
+            return 0;
+        }
+        else {
+            for(int i = r; i >= 1; i--){
+                if(board[i -1][c] == 0){
+                    if(i - 1 == 0){
+                        board[i - 1][c] = board[r][c];
+                        board[r][c] = 0;
+                        break;
+                    }
+                    continue;
+                }
+                else{
+                    board[i][c] = board[r][c];
+                    board[r][c] = 0;
+                    break;
+                }
+            }
+        }
         return 0;
     }
 

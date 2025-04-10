@@ -20,33 +20,30 @@ public class GameLogic {
      *              if no merge occurs, then return 0.
      */
     public static int moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR) {
-        if( r == 0){
-            return 0;
-        }
-        else {
-            for(int i = r; i >= 1; i--){
-                if(board[i -1][c] == 0){
-                    if(i - 1 == 0){
-                        board[i - 1][c] = board[r][c];
-                        board[r][c] = 0;
-                        break;
+            for(int i = r - 1; i >= 0; i--){
+                if(i >= minR) {
+                    if (board[i][c] == 0) {
+                        if (i == 0 || i == minR) {
+                            board[i][c] = board[r][c];
+                            board[r][c] = 0;
+                            break;
+                        }
+                        continue;
+                    } else {
+                        if (board[i][c] == board[r][c]) {
+                            board[i][c] = board[i][c] + board[r][c];
+                            board[r][c] = 0;
+                            return 1 + i;
+                        } else if (board[i + 1][c] == 0) {
+                            board[i + 1][c] = board[r][c];
+                            board[r][c] = 0;
+                            break;
+                        } else if (board[i][c] != board[r][c]) {
+                            break;
+                        }
                     }
-                    continue;
                 }
-                else{
-                    if(board[i - 1][c] == board[r][c]){
-                        board[i -1][c] = board[i -1][c] + board[r][c];
-                        board[r][c] = 0;
-                        return 1 + (i - 1);
-                    } else if (r == i) {
-                        return 0;
-                    }
-                    board[i][c] = board[r][c];
-                    board[r][c] = 0;
-                    break;
                 }
-            }
-        }
         return 0;
     }
 

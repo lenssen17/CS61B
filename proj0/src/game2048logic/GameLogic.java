@@ -34,6 +34,13 @@ public class GameLogic {
                     continue;
                 }
                 else{
+                    if(board[i - 1][c] == board[r][c]){
+                        board[i -1][c] = board[i -1][c] + board[r][c];
+                        board[r][c] = 0;
+                        return 1 + (i - 1);
+                    } else if (r == i) {
+                        return 0;
+                    }
                     board[i][c] = board[r][c];
                     board[r][c] = 0;
                     break;

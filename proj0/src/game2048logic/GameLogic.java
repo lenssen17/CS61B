@@ -94,7 +94,6 @@ public class GameLogic {
             return;
         } else if (side == Side.WEST) {
             rotateRight(board);
-            System.out.print(Arrays.deepToString(board));
             tiltUp(board);
             rotateLeft(board);
             return;

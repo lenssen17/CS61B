@@ -2,6 +2,9 @@ package game2048logic;
 
 import game2048rendering.Board;
 import game2048rendering.Side;
+
+import java.util.Arrays;
+
 import static game2048logic.MatrixUtils.rotateLeft;
 import static game2048logic.MatrixUtils.rotateRight;
 
@@ -34,7 +37,7 @@ public class GameLogic {
                         if (board[i][c] == board[r][c]) {
                             board[i][c] = board[i][c] + board[r][c];
                             board[r][c] = 0;
-                            return 1 + i;
+                                return 1 + i;
                         } else if (board[i + 1][c] == 0) {
                             board[i + 1][c] = board[r][c];
                             board[r][c] = 0;
@@ -59,7 +62,7 @@ public class GameLogic {
     public static void tiltColumn(int[][] board, int c) {
         int min = 0;
         for(int i = 1; i <= board.length - 1; i++) {
-                min = moveTileUpAsFarAsPossible(board, i, c, min);
+                min += moveTileUpAsFarAsPossible(board, i, c, min);
         }
         return;
     }
@@ -91,6 +94,7 @@ public class GameLogic {
             return;
         } else if (side == Side.WEST) {
             rotateRight(board);
+            System.out.print(Arrays.deepToString(board));
             tiltUp(board);
             rotateLeft(board);
             return;

@@ -22,12 +22,12 @@ public class SLList {
 
     public SLList(int i) {
         sentinel = new IntNode(0, first);
-        first = new IntNode(i, null);
+        sentinel.next = new IntNode(i, null);
         size = 1;
     }
 
     public void addFirst(int i){
-        sentinel.next = new IntNode(i, sentinel.next);
+        first = new IntNode(i, first);
         size += 1;
     }
 
